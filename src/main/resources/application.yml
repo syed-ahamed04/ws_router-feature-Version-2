@@ -1,0 +1,19 @@
+server:
+  port: 8092
+
+camel:
+  component:
+    servlet:
+      mapping:
+        context-path: '/*'
+  springboot:
+    tracing: false
+   
+spring:
+  activemq:
+    broker-url: tcp://localhost:61616
+    user: admin
+    password: admin
+
+
+

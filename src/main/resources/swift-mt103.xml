@@ -1,0 +1,16 @@
+<dataformat id="swift-mt103" library="classpath:swift">
+    <property key="charset" value="UTF-8" />
+    <property key="type" value="MT103" />
+    <marshal>
+        <beanio streamName="MT103">
+            <format type="csv">
+                <record name="MT103" class="com.example.SwiftMT103">
+                    <field name="sender" position="2-12" />
+                    <field name="receiver" position="27-37" />
+                    <field name="amount" position="40-52" />
+                    <!-- Map other fields as needed -->
+                </record>
+            </format>
+        </beanio>
+    </marshal>
+</dataformat>

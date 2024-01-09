@@ -1,0 +1,377 @@
+swagger: '2.0'
+info:
+  version: '1.0'
+  title: shorewise wiseconnect router
+host: localhost:8092
+tags:
+  - name: wiseconnect/triggerActiveMq
+  - name: wiseconnect/xmlToActiveMq
+  - name: wiseconnect/xmlToDataStore
+schemes:
+  - http
+paths:
+  /wiseconnect/triggerActiveMq:
+    post:
+      tags:
+        - wiseconnect/triggerActiveMq
+      operationId: route8
+      responses:
+        '200': {}
+  /wiseconnect/xmlToActiveMq:
+    post:
+      tags:
+        - wiseconnect/xmlToActiveMq
+      operationId: route9
+      consumes:
+        - application/xml
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          required: true
+          schema:
+            $ref: '#/definitions/ServiceRequest'
+      responses:
+        '200': {}
+  /wiseconnect/xmlToDataStore:
+    post:
+      tags:
+        - wiseconnect/xmlToDataStore
+      operationId: route10
+      consumes:
+        - application/xml
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          required: true
+          schema:
+            $ref: '#/definitions/ServiceRequest'
+      responses:
+        '200': {}
+definitions:
+  Context:
+    type: object
+    properties:
+      customer:
+        type: string
+        xml:
+          name: Customer
+          namespace: urn:common.service.ti.apps.tiplus2.misys.com
+      ourReference:
+        type: string
+        xml:
+          name: OurReference
+          namespace: urn:common.service.ti.apps.tiplus2.misys.com
+      theirReference:
+        type: string
+        xml:
+          name: TheirReference
+          namespace: urn:common.service.ti.apps.tiplus2.misys.com
+      behalfOfBranch:
+        type: string
+        xml:
+          name: BehalfOfBranch
+          namespace: urn:common.service.ti.apps.tiplus2.misys.com
+  IncreaseAmount:
+    type: object
+    properties:
+      amount:
+        type: string
+        xml:
+          name: Amount
+          namespace: urn:common.service.ti.apps.tiplus2.misys.com
+      currency:
+        type: string
+        xml:
+          name: Currency
+          namespace: urn:common.service.ti.apps.tiplus2.misys.com
+    xml:
+      name: IncreaseAmount
+      namespace: urn:messages.service.ti.apps.tiplus2.misys.com
+  TFILCAMN:
+    type: object
+    properties:
+      eventNotificationss:
+        xml:
+          name: EventNotificationss
+          namespace: urn:messages.service.ti.apps.tiplus2.misys.com
+        $ref: '#/definitions/EventNotificationss'
+      context:
+        xml:
+          name: Context
+          namespace: urn:messages.service.ti.apps.tiplus2.misys.com
+        $ref: '#/definitions/Context'
+      masterRef:
+        xml:
+          name: MasterRef
+          namespace: urn:messages.service.ti.apps.tiplus2.misys.com
+        $ref: '#/definitions/MasterRef'
+      applicant:
+        xml:
+          name: Applicant
+          namespace: urn:messages.service.ti.apps.tiplus2.misys.com
+        $ref: '#/definitions/Applicant'
+      getlCAmount:
+        xml:
+          name: LCAmount
+          namespace: urn:messages.service.ti.apps.tiplus2.misys.com
+        $ref: '#/definitions/LCAmount'
+      revocable:
+        xml:
+          name: Revocable
+          namespace: urn:messages.service.ti.apps.tiplus2.misys.com
+        $ref: '#/definitions/Revocable'
+      revolving:
+        xml:
+          name: Revolving
+          namespace: urn:messages.service.ti.apps.tiplus2.misys.com
+        $ref: '#/definitions/Revolving'
+      applicationDate:
+        type: string
+        xml:
+          name: ApplicationDate
+          namespace: urn:messages.service.ti.apps.tiplus2.misys.com
+      issueDate:
+        type: string
+        xml:
+          name: IssueDate
+          namespace: urn:messages.service.ti.apps.tiplus2.misys.com
+      termsOfPayment:
+        xml:
+          name: TermsOfPayment
+          namespace: urn:messages.service.ti.apps.tiplus2.misys.com
+        $ref: '#/definitions/TermsOfPayment'
+      geteBankMasterRef:
+        type: string
+        xml:
+          name: eBankMasterRef
+          namespace: urn:messages.service.ti.apps.tiplus2.misys.com
+      geteBankEvent:
+        type: string
+        xml:
+          name: eBankEvent
+          namespace: urn:messages.service.ti.apps.tiplus2.misys.com
+      sender:
+        xml:
+          name: Sender
+          namespace: urn:messages.service.ti.apps.tiplus2.misys.com
+        $ref: '#/definitions/Sender'
+      increaseAmount:
+        xml:
+          name: IncreaseAmount
+          namespace: urn:messages.service.ti.apps.tiplus2.misys.com
+        $ref: '#/definitions/IncreaseAmount'
+      amendmentNarrative:
+        type: string
+        xml:
+          name: AmendmentNarrative
+          namespace: urn:messages.service.ti.apps.tiplus2.misys.com
+      amendDate:
+        type: string
+        xml:
+          name: AmendDate
+          namespace: urn:messages.service.ti.apps.tiplus2.misys.com
+  EventNotifications:
+    type: object
+    properties:
+      messageData:
+        type: string
+        xml:
+          name: MessageData
+          namespace: urn:messages.service.ti.apps.tiplus2.misys.com
+      messageDescription:
+        type: string
+        xml:
+          name: MessageDescription
+          namespace: urn:messages.service.ti.apps.tiplus2.misys.com
+      messageInfo:
+        type: string
+        xml:
+          name: MessageInfo
+          namespace: urn:messages.service.ti.apps.tiplus2.misys.com
+      actioned:
+        type: string
+        xml:
+          name: Actioned
+          namespace: urn:messages.service.ti.apps.tiplus2.misys.com
+    xml:
+      name: EventNotifications
+      namespace: urn:messages.service.ti.apps.tiplus2.misys.com
+  ServiceRequest:
+    type: object
+    properties:
+      requestHeader:
+        xml:
+          name: RequestHeader
+        $ref: '#/definitions/RequestHeader'
+      tfilcamn:
+        xml:
+          name: TFILCAMN
+          namespace: urn:messages.service.ti.apps.tiplus2.misys.com
+        $ref: '#/definitions/TFILCAMN'
+      tfilccor:
+        xml:
+          name: TFILCCOR
+          namespace: urn:messages.service.ti.apps.tiplus2.misys.com
+        $ref: '#/definitions/TFILCAMN'
+      tfshgapp:
+        xml:
+          name: TFSHGAPP
+          namespace: urn:messages.service.ti.apps.tiplus2.misys.com
+        $ref: '#/definitions/TFILCAMN'
+    xml:
+      name: ServiceRequest
+      namespace: urn:control.services.tiplus2.misys.com
+  EventNotificationss:
+    type: object
+    properties:
+      eventNotifications:
+        type: array
+        xml:
+          name: EventNotifications
+          namespace: urn:messages.service.ti.apps.tiplus2.misys.com
+        items:
+          xml:
+            name: EventNotifications
+          $ref: '#/definitions/EventNotifications'
+    xml:
+      name: EventNotificationss
+      namespace: urn:messages.service.ti.apps.tiplus2.misys.com
+  Sender:
+    type: object
+    properties:
+      customer:
+        type: string
+        xml:
+          name: Customer
+          namespace: urn:common.service.ti.apps.tiplus2.misys.com
+    xml:
+      name: Sender
+      namespace: urn:messages.service.ti.apps.tiplus2.misys.com
+  TermsOfPayment:
+    type: object
+    properties:
+      availableBy:
+        type: string
+        xml:
+          name: AvailableBy
+          namespace: urn:common.service.ti.apps.tiplus2.misys.com
+    xml:
+      name: TermsOfPayment
+      namespace: urn:messages.service.ti.apps.tiplus2.misys.com
+  LCAmount:
+    type: object
+    properties:
+      amount:
+        type: string
+        xml:
+          name: Amount
+          namespace: urn:common.service.ti.apps.tiplus2.misys.com
+      currency:
+        type: string
+        xml:
+          name: Currency
+          namespace: urn:common.service.ti.apps.tiplus2.misys.com
+    xml:
+      name: LCAmount
+      namespace: urn:messages.service.ti.apps.tiplus2.misys.com
+  Revolving:
+    type: object
+    properties:
+      revolving:
+        type: string
+        xml:
+          name: Revolving
+          namespace: urn:common.service.ti.apps.tiplus2.misys.com
+      cumulative:
+        type: string
+        xml:
+          name: Cumulative
+          namespace: urn:common.service.ti.apps.tiplus2.misys.com
+      period:
+        type: string
+        xml:
+          name: Period
+          namespace: urn:common.service.ti.apps.tiplus2.misys.com
+      chargeToFirstPeriod:
+        type: string
+        xml:
+          name: ChargeToFirstPeriod
+          namespace: urn:common.service.ti.apps.tiplus2.misys.com
+    xml:
+      name: Revolving
+      namespace: urn:messages.service.ti.apps.tiplus2.misys.com
+  RequestHeader:
+    type: object
+    properties:
+      service:
+        type: string
+        xml:
+          name: Service
+      operation:
+        type: string
+        xml:
+          name: Operation
+      replyFormat:
+        type: string
+        xml:
+          name: ReplyFormat
+      sourceSystem:
+        type: string
+        xml:
+          name: SourceSystem
+      noRepair:
+        type: string
+        xml:
+          name: NoRepair
+      noOverride:
+        type: string
+        xml:
+          name: NoOverride
+      correlationId:
+        type: string
+        xml:
+          name: CorrelationId
+      transactionControl:
+        type: string
+        xml:
+          name: TransactionControl
+  MasterRef:
+    type: object
+    properties:
+      masterRef:
+        type: string
+        xml:
+          namespace: urn:messages.service.ti.apps.tiplus2.misys.com
+    xml:
+      name: MasterRef
+      namespace: urn:messages.service.ti.apps.tiplus2.misys.com
+  Applicant:
+    type: object
+    properties:
+      customer:
+        type: string
+        xml:
+          name: Customer
+          namespace: urn:common.service.ti.apps.tiplus2.misys.com
+      reference:
+        type: string
+        xml:
+          name: Reference
+          namespace: urn:common.service.ti.apps.tiplus2.misys.com
+    xml:
+      name: Applicant
+      namespace: urn:messages.service.ti.apps.tiplus2.misys.com
+  Revocable:
+    type: object
+    properties:
+      value:
+        type: string
+        xml:
+          namespace: urn:messages.service.ti.apps.tiplus2.misys.com
+    xml:
+      name: Revocable
+      namespace: urn:messages.service.ti.apps.tiplus2.misys.com
