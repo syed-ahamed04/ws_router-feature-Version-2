@@ -18,7 +18,7 @@ public class SwiftMT103Mapper {
         entity.setSwisnd(dto.getSwisnd());
         entity.setSenderDetail(dto.getSenderDetail());
         entity.setBeneficiaryAccount(dto.getBeneficiaryAccount());
-        
+        entity.setSenderReference(dto.getSenderReference());
        
         return entity;
     }
