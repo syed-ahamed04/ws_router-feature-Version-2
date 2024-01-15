@@ -37,7 +37,7 @@ public class SwiftMT103Parser {
         mt103.setBeneficiaryAccount(beneficiaryAccount);
         mt103.setSwidat(swidate);
         mt103.setSwitim(switme);
-        mt103.setSenderReference(senderReference);       
+        mt103.setSenderReference(senderReference);    
         return mt103;
     }
 

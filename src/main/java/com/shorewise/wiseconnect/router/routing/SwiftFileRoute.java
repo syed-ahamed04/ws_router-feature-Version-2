@@ -4,10 +4,11 @@ import org.apache.camel.Processor;
 import org.apache.camel.builder.RouteBuilder;
 import org.springframework.stereotype.Component;
 
+/*
 @Component
 public class SwiftFileRoute extends RouteBuilder {
 
-    @Override
+ @Override
     public void configure() {
         restConfiguration().component("servlet");
 
@@ -39,12 +40,15 @@ public class SwiftFileRoute extends RouteBuilder {
                 // Add additional when clauses for other types
                 .otherwise()
                     .log("Unsupported SWIFT message type")
-            .end();
-           
+            .end()
+            .log("Parsed SWIFT Message: ${body}");
     }
 
     private String extractMessageType(String body) {
       
         return "103"; // Return the message type, e.g., "102" or "202"
     }
+    
 }
+
+*/
